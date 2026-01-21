@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 7662821666780638083}
-  perception: {fileID: 7324288079014050628}
+  seekPerception: {fileID: 0}
+  fleePerception: {fileID: 7324288079014050628}
 --- !u!114 &7662821666780638083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87f4ad914a341d44b098866d08832b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1
-  maxForce: 1
+  maxSpeed: 12.5
+  maxForce: 12.5
 --- !u!114 &7324288079014050628
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,20 @@ public static class Utilities
 {
     public static float Wrap(float v, float min, float max)
     {
-        return 0;
+        float range = max - min;
+        if (range <= 0f)
+        {
+            return v;
+        }
+        while (v < min)
+        {
+            v += range;
+        }
+        while (v > max)
+        {
+            v -= range;
+        }
+        return v;
     }
 
     public static Vector3 Wrap(Vector3 v, Vector3 min, Vector3 max)
