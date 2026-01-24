@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,7 @@ public class AgentSpawner : MonoBehaviour
 {
     [SerializeField] AIAgent[] agents;
     [SerializeField] LayerMask layerMask = Physics.AllLayers;
+    [SerializeField] TextMeshProUGUI infoText;
 
     Camera activeCamera;
     int agentIndex = 0;
@@ -12,6 +14,11 @@ public class AgentSpawner : MonoBehaviour
     void Start()
     {
         activeCamera = Camera.main;
+        if (infoText != null)
+        {
+            infoText.text = $"Selected Agent: {agents[agentIndex].name}";
+
+        }
     }
 
     void Update()
@@ -21,7 +28,11 @@ public class AgentSpawner : MonoBehaviour
         {
             
             agentIndex = ++agentIndex % agents.Length;
+            if (infoText != null)
+            {
+                infoText.text = $"Selected Agent: {agents[agentIndex].name}";
 
+            }
         }
 
         if (Mouse.current.leftButton.wasPressedThisFrame ||

@@ -9,7 +9,7 @@ public class DistancePerception : Perception
         // dynamic list to store perceived game objects 
         List<GameObject> result = new List<GameObject>();
         // get all colliders inside sphere 
-        var colliders = Physics.OverlapSphere(transform.position, maxDistance);
+        var colliders = Physics.OverlapSphere(transform.position, maxDistance, layerMask);
         foreach (var collider in colliders)
         {
 
