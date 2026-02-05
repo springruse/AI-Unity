@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
 
 public static class Utilities 
 {
+    public static Color white = new(1, 1, 1, 0.5f);
+    public static Color green = new(0, 1, 0, 0.5f);
+    public static Color red = new(1, 0, 0, 0.5f);
+    public static Color blue = new(0, 0, 1, 0.5f);
     public static float Wrap(float v, float min, float max)
     {
         float range = max - min;
@@ -27,5 +32,35 @@ public static class Utilities
         v.z = Wrap(v.z, min.z, max.z);
 
         return v;
+    }
+
+    public static Vector3[] GetDirectionsInCircle(int num, float halfAngle)
+    {
+        if (num <= 0) return Array.Empty<Vector3>(); // no vectors
+        if (num == 1) return new Vector3[] { Vector3.forward }; // one vector forward
+                                                                // create array of vector3
+        Vector3[] result = new Vector3[num];
+        int index = 0;
+        // set forward direction if odd number
+        if (num % 2 == 1)
+        {
+            result[index++] = Vector3.forward;
+            num--;
+        }
+        // compute angle between rays (total angle / number of rays)
+        float angleOffset = (halfAngle * 2) / num;
+        // add directions symmetrically around the circle
+        for (int i = 1; i <= num / 2; i++)
+        {
+            result[index++] = Quaternion.AngleAxis(+angleOffset * i, Vector3.up) *
+            Vector3.forward;
+            result[index++] = Quaternion.AngleAxis(-angleOffset * i, Vector3.up) *
+            Vector3.forward;
+        }
+        return result;
+    }
+    public static Color ColorAlpha(Color color, float alpha = 0.5f)
+    {
+        return new Color(color.r, color.g, color.b, alpha);
     }
 }

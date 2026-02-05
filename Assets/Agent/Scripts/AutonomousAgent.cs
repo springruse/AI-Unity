@@ -12,6 +12,7 @@ public class AutonomousAgent : AIAgent
     [SerializeField] Perception seekPerception;
     [SerializeField] Perception fleePerception;
     [SerializeField] Perception flockPerception;
+    [SerializeField] Perception obstaclePerception;
 
     [Header("Wander")]
 
@@ -26,6 +27,10 @@ public class AutonomousAgent : AIAgent
     [SerializeField, Range(0, 5)] float alignmentWeight = 1;
     [Header("Flock Radiuses")]
     [SerializeField, Range(0, 5)] float separationRadius = 1;
+
+    [Header("Obstacle Avoidance")]
+    [SerializeField, Range(0, 10)] float obstacleAvoidanceWeight = 1;
+
     void Start()
     {
         wanderAngle = Random.Range(0, 360);
@@ -62,6 +67,16 @@ public class AutonomousAgent : AIAgent
                 movement.ApplyForce(Cohesion(gameObjects) * cohesionWeight);
                 movement.ApplyForce(Separation(gameObjects, separationRadius) * separationWeight);
                 movement.ApplyForce(Alignment(gameObjects) * alignmentWeight);
+            }
+        }
+
+        if (obstaclePerception != null && obstaclePerception.GetGameObjectInDirection(transform.forward) != null) 
+        {
+            Vector3 openDirection = Vector3.zero;
+            if (obstaclePerception.GetOpenDirection(ref openDirection))
+            {
+                hasTarget = true;
+                movement.ApplyForce(GetSteeringForce(openDirection) * obstacleAvoidanceWeight);
             }
         }
 

@@ -22,13 +22,29 @@ public class DistancePerception : Perception
                 Vector3 direction = collider.transform.position - transform.position;
                 float angle = Vector3.Angle(direction, transform.forward);
 
-                if (angle <= maxViewAngle)
+                if (angle <= MaxHalfAngle)
                 {
                     // add game object to result 
                     result.Add(collider.gameObject);
                 }
             }
+            result.Sort((a, b) =>
+            {
+                // get distance between transform position and a/b position
+                float distA = (transform.position - a.transform.position).sqrMagnitude;
+                float distB = (transform.position - b.transform.position).sqrMagnitude;
+                // Since smaller distances should come first, this sorts by nearest object
+                return distA.CompareTo(distB);
+            });   
         }
         return result.ToArray();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!debugMode) return;
+
+        Gizmos.color = debugRayColor;
+        Gizmos.DrawWireSphere(transform.position, maxDistance);
     }
 }

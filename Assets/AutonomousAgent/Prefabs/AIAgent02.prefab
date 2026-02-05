@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 1054542430921945848}
   - component: {fileID: 5941260423119313609}
   - component: {fileID: 8305816075533166868}
-  - component: {fileID: 2420711809281787192}
   - component: {fileID: 8484280230669322945}
   - component: {fileID: 7662821666780638083}
-  - component: {fileID: 7324288079014050628}
+  - component: {fileID: 8428291246911880487}
   m_Layer: 6
   m_Name: AIAgent02
   m_TagString: Agent02
@@ -91,8 +90,48 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2420711809281787192
-SphereCollider:
+--- !u!114 &8484280230669322945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46227205550191293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f63890349953a47a71a3eb89fc0b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  movement: {fileID: 7662821666780638083}
+  seekPerception: {fileID: 4728305148835106460}
+  fleePerception: {fileID: 4123834288132283708}
+  flockPerception: {fileID: 2245911586733867361}
+  obstaclePerception: {fileID: 8987835011123713371}
+  wanderRadius: 1
+  wanderDistance: 1
+  wanderDisplacement: 3
+  cohesionWeight: 2
+  separationWeight: 1
+  alignmentWeight: 1
+  separationRadius: 0.5
+  obstacleAvoidanceWeight: 5
+--- !u!114 &7662821666780638083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46227205550191293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87f4ad914a341d44b098866d08832b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 6
+  maxForce: 3.5
+--- !u!136 &8428291246911880487
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,66 +148,231 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8484280230669322945
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.12247372, z: 0}
+--- !u!1 &4229736865850685727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2428967132486233571}
+  - component: {fileID: 8987835011123713371}
+  m_Layer: 0
+  m_Name: ObstaclePerception
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2428967132486233571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229736865850685727}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.393, z: 0.431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7880909820518526296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8987835011123713371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46227205550191293}
+  m_GameObject: {fileID: 4229736865850685727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f63890349953a47a71a3eb89fc0b62, type: 3}
+  m_Script: {fileID: 11500000, guid: 14eaddc19ad95f446b54ca14cc3e56fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
-  movement: {fileID: 7662821666780638083}
-  seekPerception: {fileID: 0}
-  fleePerception: {fileID: 7324288079014050628}
-  flockPerception: {fileID: 7324288079014050628}
-  wanderRadius: 1
-  wanderDistance: 1
-  wanderDisplacement: 1
-  cohesionWeight: 1
-  separationWeight: 1
-  alignmentWeight: 1
-  separationRadius: 1
---- !u!114 &7662821666780638083
+  info: Obstacle
+  tagName: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 320
+  maxDistance: 1.72
+  numRays: 9
+  MaxHalfAngle: 71
+  debugMode: 1
+  debugRayColor: {r: 1, g: 0, b: 0, a: 1}
+  sphereRadius: 0.83
+--- !u!1 &4252347274174472742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5150292270061401585}
+  - component: {fileID: 2245911586733867361}
+  m_Layer: 0
+  m_Name: FlockPerception
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5150292270061401585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252347274174472742}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.393, z: 0.431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7880909820518526296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2245911586733867361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46227205550191293}
+  m_GameObject: {fileID: 4252347274174472742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a87f4ad914a341d44b098866d08832b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 14eaddc19ad95f446b54ca14cc3e56fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 7
-  maxForce: 3.5
---- !u!114 &7324288079014050628
+  info: Agent
+  tagName: Agent02
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 320
+  maxDistance: 2.22
+  numRays: 5
+  MaxHalfAngle: 62
+  debugMode: 1
+  debugRayColor: {r: 0.4871365, g: 0.57861626, b: 0.21652617, a: 1}
+  sphereRadius: 0.95
+--- !u!1 &6906953566051702555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4604933003987510142}
+  - component: {fileID: 4728305148835106460}
+  m_Layer: 0
+  m_Name: SeekPerception
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4604933003987510142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6906953566051702555}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.393, z: 0.431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7880909820518526296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4728305148835106460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46227205550191293}
+  m_GameObject: {fileID: 6906953566051702555}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a20ff69a7fbe243b5448702ba4aec5, type: 3}
+  m_Script: {fileID: 11500000, guid: 14eaddc19ad95f446b54ca14cc3e56fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info: Agent
+  tagName: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 320
+  maxDistance: 10
+  numRays: 9
+  MaxHalfAngle: 21
+  debugMode: 0
+  debugRayColor: {r: 0.16820925, g: 0.19656156, b: 0.6603774, a: 1}
+  sphereRadius: 0.44
+--- !u!1 &9058216271642828787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994181102176700400}
+  - component: {fileID: 4123834288132283708}
+  m_Layer: 0
+  m_Name: FleePerception
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &994181102176700400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058216271642828787}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.393, z: 0.431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7880909820518526296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4123834288132283708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9058216271642828787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14eaddc19ad95f446b54ca14cc3e56fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   info: Flee
   tagName: Agent01
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
-  maxDistance: 10
-  maxViewAngle: 180
+    m_Bits: 320
+  maxDistance: 6.7
+  numRays: 9
+  MaxHalfAngle: 69
+  debugMode: 1
+  debugRayColor: {r: 0.65882355, g: 0.16862744, b: 0.4450205, a: 1}
+  sphereRadius: 1.45
 --- !u!1001 &7326958858575166131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -287,7 +491,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 644027910916855787, guid: 8cb75dc2fdd63734988b8358f1314d25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2428967132486233571}
+    - targetCorrespondingSourceObject: {fileID: 644027910916855787, guid: 8cb75dc2fdd63734988b8358f1314d25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5150292270061401585}
+    - targetCorrespondingSourceObject: {fileID: 644027910916855787, guid: 8cb75dc2fdd63734988b8358f1314d25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4604933003987510142}
+    - targetCorrespondingSourceObject: {fileID: 644027910916855787, guid: 8cb75dc2fdd63734988b8358f1314d25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 994181102176700400}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb75dc2fdd63734988b8358f1314d25, type: 3}
 --- !u!4 &7880909820518526296 stripped
