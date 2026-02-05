@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1251703611612138243}
   - component: {fileID: 4646577172867941340}
   - component: {fileID: 1445045041555090014}
-  - component: {fileID: 4438862822596756276}
+  - component: {fileID: 7683388487553947969}
   - component: {fileID: 4411622679585674253}
   - component: {fileID: 5636884271272302780}
   m_Layer: 6
@@ -127,10 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7435373b8bdfc4bba4c4ee3b5a6342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navPath: {fileID: 4411622679585674253}
-  movement: {fileID: 4438862822596756276}
-  rotateSpeed: 5
---- !u!114 &4438862822596756276
+  movement: {fileID: 7683388487553947969}
+--- !u!114 &7683388487553947969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,11 +137,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3343803570001462390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a87f4ad914a341d44b098866d08832b7, type: 3}
+  m_Script: {fileID: 11500000, guid: f7dc8fdbfd2cc304babc56be84200aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 3
-  maxForce: 30
+  maxForce: 20
 --- !u!114 &4411622679585674253
 MonoBehaviour:
   m_ObjectHideFlags: 0
