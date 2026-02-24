@@ -33,6 +33,10 @@ public class NavMeshMovement : Movement
             navMeshAgent.destination = value;
         }
     }
+    private void Update()
+    {
+        navMeshAgent.speed = maxSpeed;
+    }
 }
 
 

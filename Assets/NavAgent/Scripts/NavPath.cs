@@ -32,8 +32,8 @@ public class NavPath : MonoBehaviour
         NavNode.ResetNavNodes();
 
         //generate path
-        //NavDijkstra.Generate(startNode, endNode, ref path);
-        NavAstar.Generate(startNode, endNode, ref path);
+        NavDijkstra.Generate(startNode, endNode, ref path);
+        //NavAstar.Generate(startNode, endNode, ref path);
 
         return startNode;
 
